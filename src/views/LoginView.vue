@@ -1,5 +1,7 @@
 <script setup lang="ts">
   import { useRouter } from 'vue-router'
+  import type { FormInstance } from 'ant-design-vue';
+  import type { Rule } from 'ant-design-vue/es/form';
   import { useCounterStore } from '../stores/counter'
   import { useUserInfoStore } from '../stores/userInfo'
   import { storeToRefs } from 'pinia'
@@ -9,26 +11,10 @@
   const router = useRouter()
   const counterStore = useCounterStore()
   const userInfoStore = useUserInfoStore()
-  const { token }: any = storeToRefs(userInfoStore)
+  const { token } = storeToRefs(userInfoStore)
 
-  const { t, locale } = useI18n({
-    useScope: 'global',
-    // inheritLocale: true,
-    /* messages: {
-      zh: {
-        username: '用户名',
-        password: '密码',
-        remenberMe: '记住我',
-        login: '登录'
-      },
-      en: {
-        username: 'Username',
-        password: 'Password',
-        remenberMe: 'Remember me',
-        login: 'Login'
-      }
-    }, */
-  })
+  const { t, locale } = useI18n()
+
   function onChangeLanguageClick () {
     locale.value = locale.value === 'en' ? 'zh' : 'en'
     userInfoStore.$patch((state) => {
@@ -36,7 +22,7 @@
     })
   }
   
-  const formRef: any = ref(null)
+  const formRef = ref<FormInstance>()
   const formState = reactive({
     username: '',
     password: '',
@@ -46,7 +32,7 @@
     username: [{ required: true, pattern: /^wzh/, message: '请输入用户名!', trigger: 'blur' }],
     password: [{ required: true, validator: passwordValidator, trigger: 'blur' }]
   })
-  async function passwordValidator (rule: any, value: any) {
+  async function passwordValidator (rule: Rule, value: any) {
     if (value === '') {
       return Promise.reject('请输入密码！');
     } else if (value !== 'wzh123wzh') {

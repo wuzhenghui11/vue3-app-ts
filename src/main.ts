@@ -1,6 +1,7 @@
 import './assets/main.css'
 
 import { createApp } from 'vue'
+// import type { InjectionKey, ComponentPublicInstance } from 'vue'
 import { createPinia } from 'pinia'
 import { useUserInfoStore } from './stores/userInfo'
 
@@ -50,5 +51,6 @@ app.use(pinia)
 app.use(router)
 app.use(Antd)
 app.use(i18n)
+console.log(app)
 
 app.mount('#app')

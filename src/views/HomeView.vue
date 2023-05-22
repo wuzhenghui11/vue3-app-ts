@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useMouse } from '@vueuse/core'
+const { x, y } = useMouse()
 defineProps<{
   msg: string
 }>()
@@ -8,6 +10,8 @@ defineProps<{
 <template>
   <div class="home">
     首页
+    <p>x: {{ x }}</p>
+    <p>y: {{ y }}</p>
   </div>
 </template>
 
