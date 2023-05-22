@@ -5,13 +5,13 @@ export function setCookie (key: string, value: string, days = 3) {
   document.cookie = `${key}=${value};${expires}`
 }
 
-export function getCookie (key: String): String {
+export function getCookie (key: string): string {
   const name = `${key}=`
   const cookieArr = document.cookie.split(';')
   for (let i = 0; i < cookieArr.length; i++) {
     const c = cookieArr[i].trim()
     if (c.indexOf(name) === 0) {
-      return c.substring(name.length, c.length) as String
+      return c.substring(name.length, c.length) as string
     }
   }
   return ''
