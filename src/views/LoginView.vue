@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { useRouter } from 'vue-router'
+  // import type { HistoryState, NavigationFailure } from 'vue-router'
   import type { FormInstance } from 'ant-design-vue';
   import type { Rule } from 'ant-design-vue/es/form';
   import { useCounterStore } from '../stores/counter'
@@ -14,6 +15,8 @@
   const { token } = storeToRefs(userInfoStore)
 
   const { t, locale } = useI18n()
+
+  console.log(router, history)
 
   function onChangeLanguageClick () {
     locale.value = locale.value === 'en' ? 'zh' : 'en'

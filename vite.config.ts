@@ -36,5 +36,12 @@ export default defineConfig({
   build: {
     manifest: true,
     minify: false
+  },
+  css: {
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true
+      }
+    }
   }
 })

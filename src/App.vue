@@ -12,7 +12,7 @@ const { language } = storeToRefs(userInfoStore)
 
 <template>
   <a-config-provider :locale="language === 'en' ? enUS : zhCN">
-    <RouterView />
+    <router-view></router-view>
   </a-config-provider>
   <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
 </template>

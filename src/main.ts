@@ -1,5 +1,3 @@
-import './assets/main.css'
-
 import { createApp } from 'vue'
 // import type { InjectionKey, ComponentPublicInstance } from 'vue'
 import { createPinia } from 'pinia'
@@ -8,8 +6,11 @@ import { useUserInfoStore } from './stores/userInfo'
 import App from './App.vue'
 import router from './router'
 
+import './assets/main.css'
+
 import Antd from 'ant-design-vue'
-import 'ant-design-vue/dist/antd.css'
+import './assets/theme.less'
+
 
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -30,7 +31,7 @@ router.beforeEach((to, from) => {
   console.log('from:', from)
   const userInfoStore = useUserInfoStore()
 
-  console.log(userInfoStore.token)
+  console.log('token:', userInfoStore.token)
   if (whiteList.includes(to.path)) {
     return true
   }

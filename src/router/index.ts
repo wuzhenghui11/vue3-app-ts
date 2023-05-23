@@ -4,7 +4,6 @@ const layoutView = () => import('@/views/LayoutView.vue')
 
 // console.log(import.meta)
 
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
