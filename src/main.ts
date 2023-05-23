@@ -8,9 +8,10 @@ import router from './router'
 
 import './assets/main.css'
 
+import globalComponents from './components'
+
 import Antd from 'ant-design-vue'
 import './assets/theme.less'
-
 
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -48,10 +49,32 @@ router.afterEach(() => {
   NProgress.done()
 })
 
+app.directive('color', {
+  mounted: (el: any, binding, vNode, prevNode) => {
+    console.log(binding)
+    el.style.color = binding.value
+  },
+})
+
+const muPlugin = {
+  install (app: any, options: any) {
+    app.config.globalProperties.$test = options.value
+  }
+}
+
 app.use(pinia)
 app.use(router)
 app.use(Antd)
 app.use(i18n)
-console.log(app)
+
+
+app.use(globalComponents)
+
+app.use(muPlugin, {
+  value: true
+})
+
+
+console.log('app:', app)
 
 app.mount('#app')

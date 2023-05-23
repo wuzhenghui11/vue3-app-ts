@@ -1,9 +1,31 @@
-// import { defineComponent } from 'vue'
+import { defineComponent, defineProps, defineEmits } from 'vue'
+import type { PropType } from 'vue'
 
-// export default defineComponent((props) => {
-//   return (
-//     <div>
-//       <h1>{props.title}</h1>
-//     </div>
-//   )
-// })
+export default defineComponent((props, ctx) => {
+  // const props = defineProps({
+  //   name: {
+  //     type: String as PropType<string>,
+  //     default: ''
+  //   }
+  // })
+  defineEmits(['c-click'])
+
+  console.log(props)
+  console.log(ctx)
+
+  const h2Click = function (e: Event) {
+    console.log(props.name)
+    ctx.emit('c-click', props.name)
+  }
+  return () => {
+    return <h2 onClick={ (e) => h2Click(e) }>1</h2>
+  }
+},
+{
+  props: {
+    name: {
+      type: String as PropType<string>,
+      default: ''
+    }
+  }
+})

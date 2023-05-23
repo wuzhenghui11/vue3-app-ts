@@ -32,13 +32,13 @@
     remember: Boolean(Cookies.get('username'))
   })
   const formRules = reactive({
-    username: [{ required: true, pattern: /^wzh/, message: '请输入用户名!', trigger: 'blur' }],
+    username: [{ required: true, pattern: /^test$/, message: '请输入用户名!', trigger: 'blur' }],
     password: [{ required: true, validator: passwordValidator, trigger: 'blur' }]
   })
   async function passwordValidator (rule: Rule, value: any) {
     if (value === '') {
       return Promise.reject('请输入密码！');
-    } else if (value !== 'wzh123wzh') {
+    } else if (value !== 'test123t') {
       return Promise.reject('请输入正确的密码！');
     } else {
       return Promise.resolve()
@@ -77,7 +77,7 @@
   })
   onMounted(() => {
     console.log(isRef(token)) // false
-    console.log(userInfoStore)
+    console.log('userInfoStore:', userInfoStore)
     counterStore.$patch({
       count: counterStore.count + 2
     })
@@ -109,7 +109,7 @@
           <a-form-item
             :label="t('login.username')"
             name="username">
-            <a-input v-model:value="formState.username" />
+            <a-input v-color:test.aa="'red'" v-model:value="formState.username" />
           </a-form-item>
 
           <a-form-item
