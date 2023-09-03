@@ -14,7 +14,11 @@
       <left-sidebar class="siderbar"></left-sidebar>
       <a-layout class="content-wrap">
         <div class="content">
-          <router-view></router-view>
+          <router-view v-slot="{ Component, route }">
+            <transition name="fade">
+              <component :is="Component" :key="route.path" />
+            </transition>
+          </router-view>
         </div>
       </a-layout>
     </a-layout>
@@ -47,5 +51,14 @@
       }
     }
   }
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+  position: absolute;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

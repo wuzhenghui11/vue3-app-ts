@@ -19,7 +19,9 @@ const router = createRouter({
     },
     {
       path: '/',
-      component: layoutView,
+      components: {
+        default: layoutView
+      },
       redirect: '/home',
       children: [
         {
@@ -37,6 +39,12 @@ const router = createRouter({
           name: 'Other',
           path: '/yewu/other',
           component: () => import('@/views/yewu1/OtherView.vue')
+        },
+        {
+          name: 'About',
+          path: '/yewu/about',
+          component: () => import('@/views/yewu1/AboutView.vue'),
+          meta: { title: '关于', requiresAuth: true }
         }
       ]
     }

@@ -12,6 +12,10 @@
         {
           title: 'other',
           path: '/yewu/other'
+        },
+        {
+          title: 'about',
+          path: '/yewu/about'
         }
       ]
     }

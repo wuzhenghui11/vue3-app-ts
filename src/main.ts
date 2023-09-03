@@ -18,7 +18,11 @@ import 'nprogress/nprogress.css'
 
 import i18n from './i18n'
 
+import { myPiniaPlugin } from './stores/storesPlugin'
+
 const pinia = createPinia()
+pinia.use(myPiniaPlugin)
+pinia.use(() => ({ objectWay: 'world!' }))
 
 const app = createApp(App)
 
@@ -28,11 +32,11 @@ const whiteList = ['/login']
 
 router.beforeEach((to, from) => {
   NProgress.start()
-  console.log('to:', to)
-  console.log('from:', from)
+  // console.log('to:', to)
+  // console.log('from:', from)
   const userInfoStore = useUserInfoStore()
 
-  console.log('token:', userInfoStore.token)
+  // console.log('token:', userInfoStore.token)
   if (whiteList.includes(to.path)) {
     return true
   }
@@ -48,6 +52,19 @@ router.beforeEach((to, from) => {
 router.afterEach(() => {
   NProgress.done()
 })
+
+// errorHandler
+app.config.warnHandler = (err, instance, info) => {
+  console.log(err, instance, info);
+}
+
+// app.config.performance = true
+
+// app.config.compilerOptions.delimiters​ = ['{{', '}}']
+
+const $aa: any = {}
+
+app.config.globalProperties = $aa
 
 app.directive('color', {
   mounted: (el: any, binding, vNode, prevNode) => {
@@ -75,6 +92,6 @@ app.use(muPlugin, {
 })
 
 
-console.log('app:', app)
+// console.log('app:', app)
 
 app.mount('#app')

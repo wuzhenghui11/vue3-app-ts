@@ -18,7 +18,7 @@ export default defineComponent((props, ctx) => {
     ctx.emit('c-click', props.name)
   }
   return () => {
-    return <h2 onClick={ (e) => h2Click(e) }>1</h2>
+    return <button onClick={ (e) => h2Click(e) }>btn</button>
   }
 },
 {

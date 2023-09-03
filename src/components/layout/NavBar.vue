@@ -1,12 +1,24 @@
 <script setup lang="ts">
   import AvatarMenu from './AvatarMenu.vue'
-  import { ref } from 'vue'
+  import { ref, onMounted } from 'vue'
+  import { useRouter } from 'vue-router'
+  const router = useRouter()
   const selectedKeys1 = ref('')
+
+  const logoRef = ref(null)
+
+  function goHome () {
+    router.push({
+      name: 'Home'
+    })
+  }
+  onMounted(() => {
+  })
 </script>
 
 <template>
   <a-layout-header class="header">
-    <div class="logo">logo</div>
+    <div class="logo" ref="logoRef" @click="goHome">logo</div>
     <a-menu class="menu"
       theme="dark"
       mode="horizontal"
@@ -28,6 +40,7 @@
       color: #fff;
       font-size: 18px;
       text-align: center;
+      cursor: pointer;
       // background-color: blue;
     }
     .menu {
