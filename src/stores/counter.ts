@@ -14,8 +14,14 @@ export const useCounterStore = defineStore('counter', () => {
 
   const doubleCount = computed(() => count.value * 2)
 
-  function increment() {
-    count.value++
+  async function increment(number?: number) {
+     const aa = await '结束'
+    if (typeof number === 'number') {
+      count.value += number
+    } else {
+      count.value++
+    }
+    return aa
   }
 
   return { 

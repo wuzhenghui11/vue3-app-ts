@@ -2,7 +2,9 @@
   import { RouterLink, useLink, useRouter, useRoute } from 'vue-router'
   import { ref, onMounted, computed, useAttrs, useSlots } from 'vue'
   import { storeToRefs } from 'pinia'
+  import type { MutationType } from 'pinia'
   import { useCounterStore } from '@/stores/counter'
+  import { useNewOption } from '@/stores/storeAddNewOption'
 
   const slot = useSlots()
   const attrs = useAttrs()
@@ -51,6 +53,8 @@
 
 
   const counterStore = useCounterStore()
+  const newOptionStore = useNewOption()
+
   const { count, countObj, doubleCount } = storeToRefs(counterStore)
   const { increment } = counterStore
 
@@ -61,22 +65,43 @@
       state.countObj.count++
       console.log(state)
     })
-    counterStore.$onAction(({
-      name, // action 名称
-      store, // store 实例，类似 `someStore`
-      args, // 传递给 action 的参数数组
-      after, // 在 action 返回或解决后的钩子
-      onError, // action 抛出或拒绝的钩子
-    }) => {
-      // 为这个特定的 action 调用提供一个共享变量
-      const startTime = Date.now()
-    })
-    // increment()
+
+    increment(1)
+
     console.log(counterStore, 'counterStore')
     console.log(count.value, countObj, 'count value and countObj')
   }
+
   counterStore.$subscribe((mutation, state) => {
-    console.log(mutation, state)
+    // import { MutationType } from 'pinia'
+    const { type, storeId, payload }: any = mutation
+    // 'direct' | 'patch object' | 'patch function'
+    // console.log(type)
+    // 和 counterStore.$id 一样 为counter
+    // console.log(storeId)
+    // 只有 mutation.type === 'patch object'的情况下才可用
+    // 传递给 cartStore.$patch() 的补丁对象。
+    // console.log(payload)
+    // console.log(state)
+  })
+
+  counterStore.$onAction((context) => {
+    // name action 名称
+    // store 实例，类似 `someStore`
+    // args 传递给 action 的参数数组
+    // after 在 action 返回或resolve后的钩子
+    // onError action 抛出或拒绝的钩子
+    const { name, store, args, after, onError } = context
+    console.log(store)
+    console.log('name:' + name, 'action args:' + args)
+    // 这将在 action 成功并完全运行后触发。
+    // 它等待着任何返回的 promise
+    after((result) => {
+      console.log(result)
+    })
+    onError((e) => {
+      console.log('error:', e)
+    })
   })
   
   onMounted(() => {
