@@ -14,6 +14,7 @@ const router = createRouter({
     },
     {
       name: '404',
+      // 匹配语法括号里是正则
       // 将匹配以 `/404` 开头的所有内容，并将其放在 `$route.params.notFound` 下
       path: '/404:notFound(.*)',
       component: () => import('@/views/error/404View.vue')

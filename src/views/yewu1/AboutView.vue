@@ -1,10 +1,10 @@
 <script setup lang="ts">
   import { RouterLink, useLink, useRouter, useRoute } from 'vue-router'
-  import { ref, onMounted, computed, useAttrs, useSlots } from 'vue'
+  import { ref, reactive, onMounted, computed, useAttrs, useSlots } from 'vue'
   import { storeToRefs } from 'pinia'
   import type { MutationType } from 'pinia'
   import { useCounterStore } from '@/stores/counter'
-  import { useNewOption } from '@/stores/storeAddNewOption'
+  import { useAddOptionStore } from '@/stores/storeAddNewOption'
 
   const slot = useSlots()
   const attrs = useAttrs()
@@ -51,40 +51,43 @@
 
   }
 
-
   const counterStore = useCounterStore()
-  const newOptionStore = useNewOption()
+  const addOptionStore = useAddOptionStore()
 
-  const { count, countObj, doubleCount } = storeToRefs(counterStore)
+  const { count, obj, doubleCount } = storeToRefs(counterStore)
   const { increment } = counterStore
+  const { getData } = addOptionStore
 
   function onStoreCountClick () {
-    counterStore.$patch((state) => {
-      // state只是 state 不包含 doubleCount getter
-      state.count = count.value + 1
-      state.countObj.count++
-      console.log(state)
-    })
-
+    counterStore.$patch({
+      count: ref(0),
+      obj: reactive({
+        count: 1
+      })
+    } as any)
+    // counterStore.$patch((state) => {
+    //   // state只是 state 不包含 doubleCount getter
+    //   state.count = count.value + 1
+    //   state.obj.count++
+    //   // console.log(state)
+    // })
     increment(1)
-
-    console.log(counterStore, 'counterStore')
-    console.log(count.value, countObj, 'count value and countObj')
+    // console.log(counterStore, 'counterStore')
+    // console.log(count.value, obj, 'count value and obj')
   }
-
+  // 订阅state
   counterStore.$subscribe((mutation, state) => {
-    // import { MutationType } from 'pinia'
     const { type, storeId, payload }: any = mutation
-    // 'direct' | 'patch object' | 'patch function'
-    // console.log(type)
-    // 和 counterStore.$id 一样 为counter
-    // console.log(storeId)
-    // 只有 mutation.type === 'patch object'的情况下才可用
-    // 传递给 cartStore.$patch() 的补丁对象。
-    // console.log(payload)
-    // console.log(state)
+    // 只有 type === 'patch object'的情况下才可用
+    // import { MutationType } from 'pinia'
+    console.log(state)
+    // type = 'direct' | 'patch object' | 'patch function'
+    // storeId 和 counterStore.$id 一样 为counter
+    // payload 传递给 cartStore.$patch() 的补丁对象。
+    console.log(`type:(${type}) storeId:${storeId} ${payload}`)
   })
 
+  // 订阅action
   counterStore.$onAction((context) => {
     // name action 名称
     // store 实例，类似 `someStore`

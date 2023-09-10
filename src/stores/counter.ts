@@ -7,14 +7,21 @@ interface CountObj {
 }
 
 export const useCounterStore = defineStore('counter', () => {
+  // state
   const count = ref(0)
-  const countObj = reactive<CountObj>({
-    count: 2
+  const obj = reactive<CountObj>({
+    count: 1
+  })
+  // getter
+  const doubleCount = computed(() => {
+    return count.value * 2
   })
 
-  const doubleCount = computed(() => count.value * 2)
-
-  async function increment(number?: number) {
+  const counterPlus = computed((num = 0) => {
+    return count.value += num
+  })
+  // action
+  async function increment(number = 0) {
      const aa = await '结束'
     if (typeof number === 'number') {
       count.value += number
@@ -26,7 +33,7 @@ export const useCounterStore = defineStore('counter', () => {
 
   return { 
     count,
-    countObj,
+    obj,
     doubleCount,
     increment
   }
