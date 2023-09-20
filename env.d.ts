@@ -15,6 +15,7 @@ declare module "*.vue" {
 }
 
 declare module "js-cookie"
+declare module "zhzl"
 declare module "nprogress"
 declare module "vue-i18n"
 declare module "vite-i18n-resources"

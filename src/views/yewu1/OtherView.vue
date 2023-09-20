@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { reactive, toRaw } from 'vue';
   import type { UnwrapRef } from 'vue';
+  import zhzl from 'zhzl'
 
   interface FormState {
     name: string;
@@ -21,6 +22,7 @@
   const wrapperCol = { span: 14 }
 
   const onSubmit = () => {
+    console.log(zhzl)
     console.log('submit!', toRaw(formState));
   }
 </script>

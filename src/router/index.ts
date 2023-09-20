@@ -1,11 +1,12 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
 
 const layoutView = () => import('@/views/LayoutView.vue')
 
-// console.log(import.meta)
+console.log(import.meta)
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  // history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory((window as any).__POWERED_BY_QIANKUN__ ? '#/micro' : '#/micro'),
   routes: [
     {
       name: 'Login',
