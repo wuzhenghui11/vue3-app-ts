@@ -4,6 +4,34 @@ const layoutView = () => import('@/views/LayoutView.vue')
 
 console.log(import.meta)
 
+const routes = [
+  {
+    name: '菜单',
+    path: '/yewu',
+    component: layoutView,
+    children: [
+      {
+        name: 'Other',
+        path: '/yewu/other',
+        component: () => import('@/views/yewu1/OtherView.vue'),
+        meta: { title: '其他', requiresAuth: true }
+      },
+      {
+        name: 'About',
+        path: '/yewu/about',
+        component: () => import('@/views/yewu1/AboutView.vue'),
+        meta: { title: '关于', requiresAuth: true }
+      },
+      {
+        name: '耐学',
+        path: '/yewu/naixue',
+        component: () => import('@/views/yewu1/NaixueView.vue'),
+        meta: { title: '耐学', requiresAuth: true }
+      }
+    ]
+  }
+]
+
 const router = createRouter({
   // history: createWebHistory(import.meta.env.BASE_URL),
   history: createWebHashHistory((window as any).__POWERED_BY_QIANKUN__ ? '#/micro' : '#/micro'),
@@ -34,24 +62,10 @@ const router = createRouter({
         }
       ]
     },
-    {
-      path: '/yewu',
-      component: layoutView,
-      children: [
-        {
-          name: 'Other',
-          path: '/yewu/other',
-          component: () => import('@/views/yewu1/OtherView.vue')
-        },
-        {
-          name: 'About',
-          path: '/yewu/about',
-          component: () => import('@/views/yewu1/AboutView.vue'),
-          meta: { title: '关于', requiresAuth: true }
-        }
-      ]
-    }
+    ...routes
   ]
 })
+
+export { routes }
 
 export default router

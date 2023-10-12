@@ -1,29 +1,15 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import { useRouter } from 'vue-router'
+  import { routes } from '@/router'
   const router = useRouter()
   const selectedKeys = ref([])
-  const openKeys = ref([])
+  const openKeys = ref(['sub0'])
 
-  const menus = ref([
-    {
-      title: '业务1',
-      children: [
-        {
-          title: 'other',
-          path: '/yewu/other'
-        },
-        {
-          title: 'about',
-          path: '/yewu/about'
-        }
-      ]
-    }
-  ])
+  const menus = ref(routes)
   
 
   const handleClick = (value: any) => {
-    console.log(value)
     router.replace({
       path: value.path
     })
@@ -46,13 +32,13 @@
         v-for="(item, index) in menus"
         :key="'sub' + index">
         <template #title>
-          {{ item.title }}
+          {{ item.name }}
         </template>
         <a-menu-item
           v-for="(cItem, cIndex) in item.children"
           :key="cIndex"
           @click="handleClick(cItem)">
-          {{ cItem.title }}
+          {{ cItem.name }}
         </a-menu-item>
       </a-sub-menu>
     </a-menu>
