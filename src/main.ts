@@ -3,39 +3,36 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { useUserInfoStore } from './stores/userInfo'
 
-
 import App from './App.vue'
 import router from './router'
-
 import './assets/main.css'
-
-import globalComponents from './components'
 
 import Antd from 'ant-design-vue'
 import './assets/theme.less'
-
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-
 import i18n from './i18n'
-
-import { myPiniaPlugin } from './stores/storesPlugin'
 
 import './publicPath.js'
 
+import 'highlight.js/styles/stackoverflow-light.css'
+import hljs from 'highlight.js/lib/core'
+import javascript from 'highlight.js/lib/languages/javascript'
+hljs.registerLanguage('javascript', javascript)
+import hljsVuePlugin from "@highlightjs/vue-plugin"
 
-
-
+// 组建
+import globalComponents from './components'
 
 let app: any = null
 // let history = null;
 
 const pinia = createPinia()
-
+import { myPiniaPlugin } from './stores/storesPlugin'
 pinia.use(myPiniaPlugin)
 pinia.use(() => ({ objectWay: 'world!' }))
 
-
+// 不需要验证是否登录的地址
 const whiteList = ['/login']
 
 NProgress.configure({ showSpinner: false })
@@ -62,7 +59,6 @@ router.afterEach(() => {
   NProgress.done()
 })
 
-
 function render(props: any = {}) {
   const { container } = props;
   // history = createWebHistory(window.__POWERED_BY_QIANKUN__ ? '/vue3' : '/');
@@ -86,10 +82,6 @@ function render(props: any = {}) {
   // app.config.performance = true
   // app.config.compilerOptions.delimiters​ = ['{{', '}}']
 
-  // 顶级属性
-  const $golabalProp: any = {}
-  app.config.globalProperties = $golabalProp
-
   // 自定义指令
   app.directive('color', {
     mounted: (el: any, binding: any, vNode: any, prevNode: any) => {
@@ -97,6 +89,9 @@ function render(props: any = {}) {
       el.style.color = binding.value
     },
   })
+
+  // 顶级属性
+  app.config.globalProperties.$hljs = hljs
 
   // 插件
   const myPlugin = {
@@ -110,6 +105,7 @@ function render(props: any = {}) {
   app.use(Antd)
   app.use(i18n)
   app.use(globalComponents)
+  app.use(hljsVuePlugin)
   app.use(myPlugin, {
     value: true
   })

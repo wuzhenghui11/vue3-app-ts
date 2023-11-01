@@ -14,9 +14,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@highlightjs/vue-plugin": "^2.1.0",
     "@vueuse/core": "^10.1.2",
     "ant-design-vue": "^3.2.20",
     "axios": "^1.4.0",
+    "highlight.js": "^11.9.0",
     "js-cookie": "^3.0.5",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.36",

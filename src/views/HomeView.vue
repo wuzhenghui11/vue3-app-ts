@@ -41,6 +41,15 @@
     <div v-for="(item, index) in bigData" :key="index">
       {{ item.text }}
     </div>
+
+    <div>
+      <highlightjs
+        language="js"
+        code="
+        template
+        ">
+      </highlightjs>
+    </div>
   </div>
 </template>
 

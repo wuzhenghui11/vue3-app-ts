@@ -5,7 +5,7 @@
   const router = useRouter()
   const selectedKeys1 = ref('')
 
-  const logoRef = ref(null)
+  const homeRef = ref(null)
 
   function goHome () {
     router.push({
@@ -18,7 +18,7 @@
 
 <template>
   <a-layout-header class="header">
-    <div class="logo" ref="logoRef" @click="goHome">logo</div>
+    <div class="go-home" ref="homeRef" @click="goHome">Home</div>
     <a-menu class="menu"
       theme="dark"
       mode="horizontal"
@@ -35,7 +35,7 @@
   .header {
     padding: 0;
     display: flex;
-    .logo {
+    .go-home {
       width: 200px;
       color: #fff;
       font-size: 18px;

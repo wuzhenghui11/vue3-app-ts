@@ -4,7 +4,11 @@
   import { routes } from '@/router'
   const router = useRouter()
   const selectedKeys = ref([])
-  const openKeys = ref(['sub0'])
+  const openKeys = ref<string[]>([])
+
+  routes.forEach((item, index) => {
+    openKeys.value.push(`sub${index}`)
+  })
 
   const menus = ref(routes)
   
@@ -30,13 +34,13 @@
       theme="dark">
       <a-sub-menu
         v-for="(item, index) in menus"
-        :key="'sub' + index">
+        :key="`sub${index}`">
         <template #title>
           {{ item.name }}
         </template>
         <a-menu-item
           v-for="(cItem, cIndex) in item.children"
-          :key="cIndex"
+          :key="`sub${index}-${cIndex}`"
           @click="handleClick(cItem)">
           {{ cItem.name }}
         </a-menu-item>

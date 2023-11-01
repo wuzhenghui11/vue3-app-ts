@@ -21,13 +21,69 @@ const routes = [
         path: '/yewu/about',
         component: () => import('@/views/yewu1/AboutView.vue'),
         meta: { title: '关于', requiresAuth: true }
+      }
+    ]
+  },
+  {
+    name: 'ES6',
+    path: '/es6',
+    component: layoutView,
+    children: [
+      {
+        name: 'let和const',
+        path: '/es6/let-const',
+        component: () => import('@/views/es6/LetConstView.vue'),
+        meta: { title: 'let和const', requiresAuth: true }
       },
       {
-        name: '耐学',
-        path: '/yewu/naixue',
-        component: () => import('@/views/yewu1/NaixueView.vue'),
-        meta: { title: '耐学', requiresAuth: true }
-      }
+        name: 'Class基本语法和继承',
+        path: '/es6/class',
+        component: () => import('@/views/es6/ClassView.vue'),
+        meta: { title: 'let和const', requiresAuth: true }
+      },
+      {
+        name: 'Symbol',
+        path: '/yewu/Symbol',
+        component: () => import('@/views/es6/SymbolView.vue'),
+        meta: { title: 'Symbol', requiresAuth: true }
+      },
+      {
+        name: 'SetMap',
+        path: '/other-articl/set-map',
+        component: () => import('@/views/es6/SetMapView.vue'),
+        meta: { title: 'Set Map', requiresAuth: true }
+      },
+    ]
+  },
+  {
+    name: '其他',
+    path: '/other-articl',
+    component: layoutView,
+    children: [
+      {
+        name: '闭包',
+        path: '/other-articl/close-func',
+        component: () => import('@/views/other/CloseFuncView.vue'),
+        meta: { title: '闭包', requiresAuth: true }
+      },
+      {
+        name: '前端安全',
+        path: '/other-articl/security',
+        component: () => import('@/views/other/SecurityView.vue'),
+        meta: { title: '前端安全', requiresAuth: true }
+      },
+      {
+        name: 'call和apply',
+        path: '/other-articl/call-apply',
+        component: () => import('@/views/other/CallApplyView.vue'),
+        meta: { title: 'Call和Apply', requiresAuth: true }
+      },
+      {
+        name: 'JS检查类型的4种方式',
+        path: '/other-articl/typeof-way',
+        component: () => import('@/views/other/TypeofWayView.vue'),
+        meta: { title: 'Call和Apply', requiresAuth: true }
+      },
     ]
   }
 ]

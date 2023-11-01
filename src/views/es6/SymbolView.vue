@@ -1,6 +1,22 @@
 <template>
   <div>
+    <highlightjs
+      language="js"
+      code="
+      // Symbol.species 指向一个构造函数。创建衍生对象时，会使用该属性
+      class MyArray extends Array {}
 
+      const a = new MyArray(1, 2, 3);
+      const b = a.map(x => x);
+      const c = a.filter(x => x > 1);
+
+      b instanceof MyArray // true
+      c instanceof MyArray // true
+      class MyArray extends Array {
+        static get [Symbol.species]() { return Array; }
+      }
+      ">
+    </highlightjs>
   </div>
 </template>
 
@@ -17,20 +33,6 @@
   let arr2: any = ['c', 'd']
   arr2[Symbol.isConcatSpreadable] = false
   arr1.value.concat(arr2, 'e')
-
-
-  // Symbol.species 指向一个构造函数。创建衍生对象时，会使用该属性
-  // class MyArray extends Array {}
-
-  // const a = new MyArray(1, 2, 3);
-  // const b = a.map(x => x);
-  // const c = a.filter(x => x > 1);
-
-  // b instanceof MyArray // true
-  // c instanceof MyArray // true
-  // class MyArray extends Array {
-  //   static get [Symbol.species]() { return Array; }
-  // }
 </script>
 
 <style scoped>
