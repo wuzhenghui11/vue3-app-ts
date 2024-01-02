@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import { useRouter } from 'vue-router'
-  import { routes } from '@/router'
+  import routes from '@/router/routes'
   const router = useRouter()
   const selectedKeys = ref([])
   const openKeys = ref<string[]>([])
@@ -11,11 +11,18 @@
   })
 
   const menus = ref(routes)
-  
 
   const handleClick = (value: any) => {
+    // router.push({
+    //   path: value.path,
+    // })
     router.replace({
-      path: value.path
+      path: value.path,
+      // http://localhost:8080/?abc=123/#/micro/v3/other?abcd=123 
+      // route.query.value 取不到 abc 取得到abcd 目前是
+      // query: {
+      //   abcd: 123
+      // }
     })
   }
 

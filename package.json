@@ -20,6 +20,7 @@
     "axios": "^1.4.0",
     "highlight.js": "^11.9.0",
     "js-cookie": "^3.0.5",
+    "moment": "^2.29.4",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.36",
     "vue": "^3.3.2",

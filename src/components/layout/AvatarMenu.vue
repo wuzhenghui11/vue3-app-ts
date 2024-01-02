@@ -3,7 +3,7 @@
   import { useRouter } from 'vue-router'
   import Cookies from 'js-cookie'
 
-  import { useUserInfoStore } from '../../stores/userInfo'
+  import { useUserInfoStore } from '@/stores/userInfo'
 
   const userInfoStore = useUserInfoStore()
 

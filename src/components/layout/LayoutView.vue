@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import NavBar from '@/components/layout/NavBar.vue'
-  import LeftSidebar from '@/components/layout/LeftSidebar.vue'
+  import NavBar from './NavBar.vue'
+  import LeftSidebar from './LeftSidebar.vue'
   // import { ref } from 'vue'
   defineProps<{
     msg: string
