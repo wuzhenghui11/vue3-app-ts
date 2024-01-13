@@ -12,6 +12,7 @@ const LetConstView = () => import('@/views/es6/LetConstView.vue')
 const ClassView = () => import('@/views/es6/ClassView.vue')
 const SymbolView = () => import('@/views/es6/SymbolView.vue')
 const SetMapView = () => import('@/views/es6/SetMapView.vue')
+const AsyncView = () => import('@/views/es6/AsyncView.vue')
 
 // basic
 const CloseFuncView = () => import('@/views/basic/CloseFuncView.vue')
@@ -81,6 +82,12 @@ const routes = [
         path: '/es6/set-map',
         component: SetMapView,
         meta: { title: 'Set Map', requiresAuth: true },
+      },
+      {
+        name: 'async',
+        path: '/es6/async',
+        component: AsyncView,
+        meta: { title: 'async', requiresAuth: true },
       },
     ]
   },

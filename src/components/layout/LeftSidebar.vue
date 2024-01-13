@@ -7,7 +7,7 @@
   const openKeys = ref<string[]>([])
 
   routes.forEach((item, index) => {
-    openKeys.value.push(`sub${index}`)
+    // openKeys.value.push(`sub${index}`)
   })
 
   const menus = ref(routes)
@@ -16,12 +16,13 @@
     // router.push({
     //   path: value.path,
     // })
-    router.replace({
+    router.push({
       path: value.path,
       // http://localhost:8080/?abc=123/#/micro/v3/other?abcd=123 
       // route.query.value 取不到 abc 取得到abcd 目前是
       // query: {
-      //   abcd: 123
+      //   abc: null,
+      //   abcd: 123,
       // }
     })
   }

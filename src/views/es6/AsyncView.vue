@@ -25,12 +25,17 @@
 </template>
 
 <script setup lang="ts">
-  import { reactive, ref, toRaw } from 'vue'
+  import { reactive, ref, toRaw, onMounted } from 'vue'
+  import { getData } from '@/api'
 
-  async function hh () {
-    let a = await 1
-    return a
+  async function init () {
+    console.log(1)
+    const { data } = await getData({})
+    console.log(data)
   }
+  onMounted(() => {
+    init()
+  })
 
 </script>
 
