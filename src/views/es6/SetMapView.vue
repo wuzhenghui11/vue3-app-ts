@@ -3,6 +3,9 @@
     <highlightjs
       language="js"
       code="
+      const s = new Set([1, 2])
+      [3, 4].forEach(e => s.add(e))
+      s.size // 4
       // WeakRef 对象，用于直接创建对象的弱引用
       // 注意，标准规定，一旦使用WeakRef()创建了原始对象的弱引用，那么在本轮事件循环（event loop），原始对象肯定不会被清除，只会在后面的事件循环才会被清除
       let target = {}
