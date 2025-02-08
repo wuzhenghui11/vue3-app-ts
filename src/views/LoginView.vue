@@ -38,7 +38,7 @@
   async function passwordValidator (rule: Rule, value: any) {
     if (value === '') {
       return Promise.reject('请输入密码！');
-    } else if (value !== 'test123t') {
+    } else if (value !== 'test123') {
       return Promise.reject('请输入正确的密码！');
     } else {
       return Promise.resolve()

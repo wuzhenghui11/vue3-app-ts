@@ -9,6 +9,9 @@ const Pinia = () => import('@/views/vue3/Pinia.vue')
 
 // es6
 const LetConstView = () => import('@/views/es6/LetConstView.vue')
+const JiegoufuzhiView = () => import('@/views/es6/JiegoufuzhiView.vue')
+const RegExpView = () => import('@/views/es6/RegExpView.vue')
+const FunctionView = () => import('@/views/es6/FunctionView.vue')
 const ClassView = () => import('@/views/es6/ClassView.vue')
 const SymbolView = () => import('@/views/es6/SymbolView.vue')
 const SetMapView = () => import('@/views/es6/SetMapView.vue')
@@ -64,6 +67,24 @@ const routes = [
         path: '/es6/let-const',
         component: LetConstView,
         meta: { title: 'let和const', requiresAuth: true },
+      },
+      {
+        name: '结构赋值',
+        path: '/es6/Jiegoufuzhi',
+        component: JiegoufuzhiView,
+        meta: { title: '结构赋值', requiresAuth: true },
+      },
+      {
+        name: '正则扩展',
+        path: '/es6/RegExpView',
+        component: RegExpView,
+        meta: { title: '正则扩展', requiresAuth: true },
+      },
+      {
+        name: '函数扩展',
+        path: '/es6/FunctionView',
+        component: FunctionView,
+        meta: { title: '函数扩展', requiresAuth: true },
       },
       {
         name: 'Class基本语法和继承',

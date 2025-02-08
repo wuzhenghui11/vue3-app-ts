@@ -4,8 +4,14 @@
       <a-collapse-panel key="1" header="let 命令*重点">
         <article></article>
       </a-collapse-panel>
-      <a-collapse-panel key="2" header="块级作用域*重点">
-        <article></article>
+      <a-collapse-panel key="2">
+        <template #header>
+          <p>块级作用域*<span style="color: red;">重点</span></p>
+        </template>
+        <article>
+          <h3>第一种场景，内层变量可能会覆盖外层变量。</h3>
+          <h3>第二种场景，用来计数的循环变量泄露为全局变量。</h3>
+        </article>
       </a-collapse-panel>
       <a-collapse-panel key="3" header="const 命令*重点">
         <article>
@@ -43,6 +49,31 @@
         <highlightjs
             language="js"
             code="
+            // ES5 只有全局作用域和函数作用域，没有块级作用域，这带来很多不合理的场景。
+            // 第一种场景，内层变量可能会覆盖外层变量。
+            var tmp = new Date();
+
+            function f() {
+              console.log(tmp);
+              if (false) {
+                var tmp = 'hello world';
+              }
+            }
+
+            f(); // undefined
+            // 第二种场景，用来计数的循环变量泄露为全局变量。
+            var s = 'hello';
+
+            for (var i = 0; i < s.length; i++) {
+              console.log(s[i]);
+            }
+
+            console.log(i); // 5
+            
+            上面代码中，变量i只用来控制循环，但是循环结束后，它并没有消失，泄露成了全局变量。
+
+
+
 function chifan(){
   console.log('我要吃米饭')
 }

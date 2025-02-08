@@ -3,7 +3,7 @@ import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router
 import routes from './routes'
 
 const layoutView = () => import('@/components/layout/LayoutView.vue')
-const NotFundView = () => import('@/views/notFound/NotFundView.vue')
+const NotFundView = () => import('@/views/error/404View.vue')
 const LoginView = () => import('@/views/LoginView.vue')
 const HomeView = () => import('@/views/HomeView.vue')
 
