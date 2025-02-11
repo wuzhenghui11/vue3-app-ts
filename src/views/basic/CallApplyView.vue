@@ -2,12 +2,14 @@
   <div>
     <pre>
       <code>
-        call和apply 都是改变this指向的
+        call和apply 都是改变this指向的（bind也是改变this指向）
+        二者都是函数对象Function的方法，且第一个参数都是要绑定对象的上下文
         call要比apply快
         call() 方法调用一个函数, 其具有一个指定的 this 值和分别地提供的参数(参数的列表)
         apply() 第二个参数是数组
       </code>
     </pre>
+    <a href="https://blog.csdn.net/qq_43000315/article/details/125360096">csdn call和applay</a>
 
     <highlightjs
       language="js"

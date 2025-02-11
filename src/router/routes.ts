@@ -12,6 +12,8 @@ const LetConstView = () => import('@/views/es6/LetConstView.vue')
 const JiegoufuzhiView = () => import('@/views/es6/JiegoufuzhiView.vue')
 const RegExpView = () => import('@/views/es6/RegExpView.vue')
 const FunctionView = () => import('@/views/es6/FunctionView.vue')
+const ArrayExpansionView = () => import('@/views/es6/ArrayExpansionView.vue')
+const ObjectExpansionView = () => import('@/views/es6/ObjectExpansionView.vue')
 const ClassView = () => import('@/views/es6/ClassView.vue')
 const SymbolView = () => import('@/views/es6/SymbolView.vue')
 const SetMapView = () => import('@/views/es6/SetMapView.vue')
@@ -85,6 +87,18 @@ const routes = [
         path: '/es6/FunctionView',
         component: FunctionView,
         meta: { title: '函数扩展', requiresAuth: true },
+      },
+      {
+        name: '数组扩展',
+        path: '/es6/ArrayExpansionView',
+        component: ArrayExpansionView,
+        meta: { title: '数组扩展', requiresAuth: true },
+      },
+      {
+        name: '对象扩展',
+        path: '/es6/ObjectExpansionView',
+        component: ObjectExpansionView,
+        meta: { title: '对象扩展', requiresAuth: true },
       },
       {
         name: 'Class基本语法和继承',
