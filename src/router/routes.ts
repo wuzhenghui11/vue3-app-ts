@@ -20,6 +20,7 @@ const SetMapView = () => import('@/views/es6/SetMapView.vue')
 const ProxyReflectView = () => import('@/views/es6/ProxyReflectView.vue')
 const PromiseView = () => import('@/views/es6/PromiseView.vue')
 const IteratorView = () => import('@/views/es6/IteratorView.vue')
+const GeneratorView = () => import('@/views/es6/GeneratorView.vue')
 
 const AsyncView = () => import('@/views/es6/AsyncView.vue')
 
@@ -134,13 +135,10 @@ const routes = [
         component: PromiseView,
         meta: { title: 'Promise', requiresAuth: true },
       },
-      { name: 'IteratorView', path: '/es6/IteratorView', component: IteratorView, meta: { title: 'Iterator' }, },
-      {
-        name: 'async',
-        path: '/es6/async',
-        component: AsyncView,
-        meta: { title: 'async', requiresAuth: true },
-      },
+      {name: 'IteratorView', path: '/es6/IteratorView', component: IteratorView, meta: { title: 'Iterator' }, },
+      {name: 'GeneratorView', path: '/es6/GeneratorView', component: GeneratorView, meta: { title: 'Generator' }, },
+
+      {name: 'async', path: '/es6/async', component: AsyncView, meta: { title: 'async', requiresAuth: true },},
     ]
   },
   {

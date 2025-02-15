@@ -7,7 +7,7 @@ const NotFundView = () => import('@/views/error/404View.vue')
 const LoginView = () => import('@/views/LoginView.vue')
 const HomeView = () => import('@/views/HomeView.vue')
 
-console.log(import.meta)
+// console.log(import.meta)
 
 const router = createRouter({
   // history: createWebHistory(import.meta.env.BASE_URL),
