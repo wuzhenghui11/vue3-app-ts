@@ -17,7 +17,10 @@ const ObjectExpansionView = () => import('@/views/es6/ObjectExpansionView.vue')
 const ClassView = () => import('@/views/es6/ClassView.vue')
 const SymbolView = () => import('@/views/es6/SymbolView.vue')
 const SetMapView = () => import('@/views/es6/SetMapView.vue')
-const ProxyView = () => import('@/views/es6/ProxyView')
+const ProxyReflectView = () => import('@/views/es6/ProxyReflectView.vue')
+const PromiseView = () => import('@/views/es6/PromiseView.vue')
+const IteratorView = () => import('@/views/es6/IteratorView.vue')
+
 const AsyncView = () => import('@/views/es6/AsyncView.vue')
 
 // basic
@@ -120,11 +123,18 @@ const routes = [
         meta: { title: 'Set Map', requiresAuth: true },
       },
       {
-        name: 'Proxy',
-        path: '/es6/ProxyView',
-        component: ProxyView,
-        meta: { title: 'proxy', requiresAuth: true },
+        name: 'ProxyReflect',
+        path: '/es6/ProxyReflectView',
+        component: ProxyReflectView,
+        meta: { title: 'ProxyReflect', requiresAuth: true },
       },
+      {
+        name: 'PromiseView',
+        path: '/es6/PromiseView',
+        component: PromiseView,
+        meta: { title: 'Promise', requiresAuth: true },
+      },
+      { name: 'IteratorView', path: '/es6/IteratorView', component: IteratorView, meta: { title: 'Iterator' }, },
       {
         name: 'async',
         path: '/es6/async',
