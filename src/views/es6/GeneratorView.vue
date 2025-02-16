@@ -55,9 +55,9 @@
     for(var i = 0; true; i++) {
       /* 
         当执行 g2.next() g2.next() g2.next(true) 时会打印
-        undefined
-        undefined
-        true
+        0 undefined
+        1 undefined
+        0 true
         第一次 next 遇见 yield 就停止 0 undefined
         第二次 next 执行后面的代码遇见 yield 后停止
         第三次 next 传入true 时 reset 就为 true 了
