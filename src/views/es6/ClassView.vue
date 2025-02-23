@@ -108,6 +108,34 @@ person.sayName(); // 张三
         let c = new Child('jason', '18', '180cm')
         ">
         </highlightjs>
+        <a-alert type="warning" message="ES6 规定，在子类普通方法中通过super调用父类的方法时，方法内部的this指向当前的子类实例。"></a-alert>
+        <highlightjs code="
+        class A {
+          constructor() {
+            this.x = 1;
+          }
+          print() {
+            console.log(this.x);
+          }
+        }
+
+        class B extends A {
+          constructor() {
+            super();
+            this.x = 2;
+          }
+          m() {
+            super.print();
+          }
+        }
+
+        let b = new B();
+        b.m() // 2
+        " />
+        <p>上面代码中，super.print()虽然调用的是A.prototype.print()，但是A.prototype.print()内部的this指向子类B的实例，导致输出的是2，而不是1。也就是说，实际上执行的是super.print.call(this)。</p>
+        <a-alert type="warning" message="在子类的静态方法中通过super调用父类的方法时，方法内部的this指向当前的子类，而不是子类的实例。" />
+        <h3>类的 prototype 属性和__proto__属性</h3>
+        <p>大多数浏览器的 ES5 实现之中，每一个对象都有__proto__属性，指向对应的构造函数的prototype属性。Class 作为构造函数的语法糖，同时有prototype属性和__proto__属性，因此同时存在两条继承链。</p>
       </article>
     </div>
   </div>

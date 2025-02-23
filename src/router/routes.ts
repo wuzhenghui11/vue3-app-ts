@@ -106,12 +106,6 @@ const routes = [
         meta: { title: '对象扩展', requiresAuth: true },
       },
       {
-        name: 'Class基本语法和继承',
-        path: '/es6/class',
-        component: ClassView,
-        meta: { title: 'let和const', requiresAuth: true },
-      },
-      {
         name: 'Symbol',
         path: '/es6/Symbol',
         component: SymbolView,
@@ -139,6 +133,12 @@ const routes = [
       {name: 'GeneratorView', path: '/es6/GeneratorView', component: GeneratorView, meta: { title: 'Generator' }, },
 
       {name: 'async', path: '/es6/async', component: AsyncView, meta: { title: 'async', requiresAuth: true },},
+      {
+        name: 'Class基本语法和继承',
+        path: '/es6/class',
+        component: ClassView,
+        meta: { title: 'let和const', requiresAuth: true },
+      },
     ]
   },
   {
