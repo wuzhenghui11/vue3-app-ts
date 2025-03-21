@@ -55,6 +55,10 @@ router.beforeEach((to, from) => {
   }
 })
 
+router.beforeResolve((to, from) => {
+  console.log(to, from);
+})
+
 router.afterEach(() => {
   NProgress.done()
 })

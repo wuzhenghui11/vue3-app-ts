@@ -20,12 +20,7 @@
     " />
     <p>上面三种情况，扩展运算符都放在圆括号里面，但是前两种情况会报错，因为扩展运算符所在的括号不是函数调用。</p>
     <h3>(5) 实现了 Iterator 接口的对象</h3>
-    <a-alert
-      message="任何定义了遍历器（Iterator）接口的对象（参阅 Iterator 一章），都可以用扩展运算符转为真正的数组。"
-      description=""
-      type="warning"
-      show-icon
-    />
+    <c-warning message="任何定义了遍历器（Iterator）接口的对象（参阅 Iterator 一章），都可以用扩展运算符转为真正的数组。"></c-warning>
     <highlightjs
       language="js"
       code="
@@ -46,8 +41,8 @@
       "/>
   </div>
 </template>
-<script setup lang="ts">
-
+<script setup>
+import CWarning from './components/CWarning.vue'
 </script>
 <style lang="">
   

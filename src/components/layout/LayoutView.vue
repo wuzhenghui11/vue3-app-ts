@@ -1,17 +1,15 @@
-<script setup lang="ts">
+<script setup>
+  // import type { ComponentPublicInstance } from 'vue'
+  // import { ref } from 'vue'
   import NavBar from './NavBar.vue'
   import LeftSidebar from './LeftSidebar.vue'
-  // import { ref } from 'vue'
-  defineProps<{
-    msg: string
-  }>()
 </script>
 
 <template>
   <a-layout class="main">
-    <nav-bar class="header-bara"></nav-bar>
+    <NavBar class="header-bara"></NavBar>
     <a-layout class="second-wrap">
-      <left-sidebar class="siderbar"></left-sidebar>
+      <LeftSidebar class="siderbar"></LeftSidebar>
       <a-layout class="content-wrap">
         <div class="content">
           <router-view v-slot="{ Component, route }">

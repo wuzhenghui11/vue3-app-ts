@@ -4,6 +4,7 @@ const layoutView = () => import('@/components/layout/LayoutView.vue')
 const ImageCropper = () => import('@/views/conversionTool/ImageCropper.vue')
 
 // v3
+const LearnView = () => import('@/views/vue3/LearnView.vue')
 const OtherView = () => import('@/views/vue3/OtherView.vue')
 const Pinia = () => import('@/views/vue3/Pinia.vue')
 
@@ -34,8 +35,7 @@ const TypeofWayView = () => import('@/views/basic/TypeofWayView.vue')
 const routes = [
   {
     name: 'tool',
-    path: '/tool',
-    component: layoutView,
+    path: '/tool/',
     children: [
       {
         name: '图片裁剪',
@@ -48,8 +48,8 @@ const routes = [
   {
     name: 'V3',
     path: '/vue3',
-    component: layoutView,
     children: [
+      { name: 'learn' , path: '/vue3/learn', component: LearnView, meta: { title: 'Learn', requiresAuth: true}, },
       {
         name: 'Other',
         path: '/vue3/other',
@@ -67,7 +67,6 @@ const routes = [
   {
     name: 'ECMAScript',
     path: '/es6',
-    component: layoutView,
     children: [
       {
         name: 'let和const',
@@ -144,7 +143,6 @@ const routes = [
   {
     name: 'Basic',
     path: '/basic',
-    component: layoutView,
     children: [
       {
         name: '闭包',

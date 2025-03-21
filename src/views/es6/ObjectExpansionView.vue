@@ -138,9 +138,10 @@
     <p>AggregateError 在一个错误对象里面，封装了多个错误。如果某个单一操作，同时引发了多个错误，需要同时抛出这些错误，那么就可以抛出一个 AggregateError 错误对象，把各种错误都放在这个对象里面。</p>
   </div>
 </template>
-<script lang="ts">
-
+<script setup lang="ts">
+  import { ref } from 'vue'
+  const a = ref(1)
 </script>
-<style>
+<style scoped>
   
 </style>

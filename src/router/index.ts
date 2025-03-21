@@ -29,7 +29,8 @@ const router = createRouter({
           name: 'Home',
           path: '/home',
           component: HomeView
-        }
+        },
+        ...routes
       ]
     },
     {
@@ -39,7 +40,7 @@ const router = createRouter({
       path: '/404:notFound(.*)',
       component: NotFundView
     },
-    ...routes
+    // ...routes
   ]
 })
 
