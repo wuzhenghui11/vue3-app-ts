@@ -1,8 +1,13 @@
 <script setup>
   // import type { ComponentPublicInstance } from 'vue'
-  // import { ref } from 'vue'
+  import { ref, onMounted } from 'vue'
   import NavBar from './NavBar.vue'
   import LeftSidebar from './LeftSidebar.vue'
+  import { useRoute } from 'vue-router'
+  const route = useRoute()
+  onMounted(() => {
+    console.log(route)
+  })
 </script>
 
 <template>
@@ -13,7 +18,7 @@
       <a-layout class="content-wrap">
         <div class="content">
           <router-view v-slot="{ Component, route }">
-            <transition name="fade">
+            <transition :name="route.meta.transition || 'fade'">
               <component :is="Component" :key="route.path" />
             </transition>
           </router-view>

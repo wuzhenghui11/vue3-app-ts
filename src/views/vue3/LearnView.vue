@@ -20,7 +20,7 @@
   
 <script setup>
   import { ref, reactive, computed, onMounted } from 'vue'
-  import { useRoute, useRouter } from 'vue-router'
+  import { useRoute, useRouter} from 'vue-router'
   import LearnComponent from './components/LearnComponent.vue'
 
   const router = useRouter()
