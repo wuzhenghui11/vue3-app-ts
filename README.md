@@ -50,3 +50,9 @@ pnpm test:unit
 ```sh
 pnpm lint
 ```
+
+
+## 学习ts
+
+js 中已经有一小部分基础类型可用 boolean、string、number、null、bigint、symbol、undefined 可在接口中使用，ts 扩展了这个列表如 any unknow、never、void
+

@@ -25,6 +25,9 @@ const GeneratorView = () => import('@/views/es6/GeneratorView.vue')
 
 const AsyncView = () => import('@/views/es6/AsyncView.vue')
 
+// TypeScript
+const LearnTypeScriptView = () => import('@/views/typescript/learnTypeScriptView.vue')
+
 // basic
 const CloseFuncView = () => import('@/views/basic/CloseFuncView.vue')
 const SecurityView = () => import('@/views/basic/SecurityView.vue')
@@ -139,6 +142,18 @@ const routes = [
         meta: { title: 'let和const', requiresAuth: true },
       },
     ]
+  },
+  {
+    name: 'TypeScript',
+    path: '/learnTypeScript',
+    children: [
+      {
+        name: 'ts',
+        path: '/learnTypeScript/ts',
+        component: LearnTypeScriptView,
+        meta: { title: 'Promise', requiresAuth: true },
+      },
+    ],
   },
   {
     name: 'Basic',
