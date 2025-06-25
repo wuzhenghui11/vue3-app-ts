@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="learn">
     <p v-for="(item, key, index) in myObject" :key="key">
       {{ item }}:{{ key }}:{{ index }}
     </p>
@@ -19,6 +19,7 @@
 </template>
   
 <script setup>
+  import './test.css'
   import { ref, reactive, computed, onMounted } from 'vue'
   import { useRoute, useRouter} from 'vue-router'
   import LearnComponent from './components/LearnComponent.vue'
@@ -68,6 +69,10 @@
 
 </script>
   
-<style>
-  
+<style lang="less">
+  .learn {
+    p {
+      color: red;
+    }
+  }
 </style>
