@@ -1,5 +1,6 @@
 <template>
   <div class="learn">
+    <img :src="img01" />
     <p v-for="(item, key, index) in myObject" :key="key">
       {{ item }}:{{ key }}:{{ index }}
     </p>
@@ -20,6 +21,8 @@
   
 <script setup>
   import './test.css'
+  import img01 from '@/../public/01.jpeg?no-inline'
+  import img001 from './01.jpeg?inline'
   import { ref, reactive, computed, onMounted } from 'vue'
   import { useRoute, useRouter} from 'vue-router'
   import LearnComponent from './components/LearnComponent.vue'
@@ -54,6 +57,8 @@
   }
 
   onMounted(() => {
+    console.log(img01)
+    console.log(img001)
     console.log(count)
     console.log(state)
   })
