@@ -2,6 +2,7 @@
   <div>
     <pre>
       <code>
+        call() 和 apply()都是为了改变被调用的函数内部的上下文(context)而存在的,即改变被调用的函数内部的this指向;
         call和apply 都是改变this指向的（bind也是改变this指向）
         二者都是函数对象Function的方法，且第一个参数都是要绑定对象的上下文
         call要比apply快

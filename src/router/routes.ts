@@ -11,6 +11,7 @@ const Pinia = () => import('@/views/vue3/Pinia.vue')
 // es6
 const LetConstView = () => import('@/views/es6/LetConstView.vue')
 const JiegoufuzhiView = () => import('@/views/es6/JiegoufuzhiView.vue')
+const StringExtensionView = () => import('@/views/es6/StringExtensionView.vue')
 const RegExpView = () => import('@/views/es6/RegExpView.vue')
 const FunctionView = () => import('@/views/es6/FunctionView.vue')
 const ArrayExpansionView = () => import('@/views/es6/ArrayExpansionView.vue')
@@ -30,9 +31,11 @@ const LearnTypeScriptView = () => import('@/views/typescript/learnTypeScriptView
 
 // basic
 const CloseFuncView = () => import('@/views/basic/CloseFuncView.vue')
+const FunctionObjectView = () => import('@/views/basic/FunctionObjectView.vue')
 const SecurityView = () => import('@/views/basic/SecurityView.vue')
 const CallApplyView = () => import('@/views/basic/CallApplyView.vue')
 const TypeofWayView = () => import('@/views/basic/TypeofWayView.vue')
+const GlobalThisView = () => import('@/views/basic/GlobalThisView.vue')
 
 
 const routes = [
@@ -82,6 +85,12 @@ const routes = [
         path: '/es6/Jiegoufuzhi',
         component: JiegoufuzhiView,
         meta: { title: '结构赋值', requiresAuth: true },
+      },
+      {
+        name: '字符串扩展',
+        path: '/es6/string-extension',
+        component: StringExtensionView,
+        meta: { title: '字符串扩展', requiresAuth: true },
       },
       {
         name: '正则扩展',
@@ -160,6 +169,12 @@ const routes = [
     path: '/basic',
     children: [
       {
+        name: '方法这个对象',
+        path: '/basic/function-object',
+        component: FunctionObjectView,
+        meta: { title: 'js中Function也是一个对象', requiresAuth: true },
+      },
+      {
         name: '闭包',
         path: '/basic/close-func',
         component: CloseFuncView,
@@ -182,6 +197,12 @@ const routes = [
         path: '/basic/typeof-way',
         component: TypeofWayView,
         meta: { title: 'Call和Apply', requiresAuth: true },
+      },
+      {
+        name: 'GlobalThis',
+        path: '/basic/globalThis',
+        component: GlobalThisView,
+        meta: { title: 'globalThis', requiresAuth: true },
       },
     ]
   }

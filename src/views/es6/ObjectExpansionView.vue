@@ -1,5 +1,46 @@
 <template>
   <div>
+    <h2>方法的 name 属性</h2>
+    <p>如果对象的方法使用了取值函数（getter）和存值函数（setter），则name属性不是在该方法上面，而是该方法的属性的描述对象的get和set属性上面，返回值是方法名前加上get和set</p>
+    <highlightjs
+      code="
+const obj = {
+  get foo() {},
+  set foo(x) {}
+};
+
+obj.foo.name
+// TypeError: Cannot read property 'name' of undefined
+
+const descriptor = Object.getOwnPropertyDescriptor(obj, 'foo');
+
+descriptor.get.name // 'get foo'
+descriptor.set.name // 'set foo'
+      "></highlightjs>
+    <p>有两种特殊情况：bind方法创造的函数，name属性返回bound加上原函数的名字；Function构造函数创造的函数，name属性返回anonymous。</p>
+    <highlightjs
+    code="
+(new Function()).name // 'anonymous'
+
+var doSomething = function() {
+  // ...
+};
+doSomething.bind().name // 'bound doSomething'
+    "></highlightjs>
+    <p>如果对象的方法是一个 Symbol 值，那么name属性返回的是这个 Symbol 值的描述。</p>
+    <highlightjs code="
+const key1 = Symbol('description');
+const key2 = Symbol();
+let obj = {
+  [key1]() {},
+  [key2]() {},
+};
+obj[key1].name // '[description]'
+obj[key2].name // ''
+    "></highlightjs>
+    <h2>属性的可枚举性和遍历</h2>
+    <p>引入“可枚举”（enumerable）这个概念的最初目的，就是让某些属性可以规避掉for...in操作，不然所有内部属性和方法都会被遍历到。比如，对象原型的toString方法，以及数组的length属性，就通过“可枚举性”，从而避免被for...in遍历到。</p>
+
     <a-alert
       message="注意，简写的对象方法不能用作构造函数，会报错。"
       description=""
@@ -72,7 +113,7 @@
       "
     ></highlightjs>
     <p>上面三种super的用法都会报错，因为对于 JavaScript 引擎来说，这里的super都没有用在对象的方法之中。第一种写法是super用在属性里面，第二种和第三种写法是super用在一个函数里面，然后赋值给foo属性。目前，只有对象方法的简写法可以让 JavaScript 引擎确认，定义的是对象的方法。</p>
-    <p>JavaScript 引擎内部，super.foo等同于Object.getPrototypeOf(this).foo（属性）或Object.getPrototypeOf(this).foo.call(this)（方法）。</p>
+    <b>JavaScript 引擎内部，super.foo等同于Object.getPrototypeOf(this).foo（属性）或Object.getPrototypeOf(this).foo.call(this)（方法）。</b>
     <highlightjs
       language="js"
       code="
@@ -95,7 +136,7 @@
         obj.foo() // world
       "
     />
-    <p>上面代码中，super.foo指向原型对象proto的foo方法，但是绑定的this却还是当前对象obj，因此输出的就是world。</p>
+    <b>上面代码中，super.foo指向原型对象proto的foo方法，但是绑定的this却还是当前对象obj，因此输出的就是world。</b>
     <h3>对象的扩展运算符</h3>
     <a-alert
       message="注意，解构赋值的拷贝是浅拷贝，即如果一个键的值是复合类型的值（数组、对象、函数）、那么解构赋值拷贝的是这个值的引用，而不是这个值的副本。"

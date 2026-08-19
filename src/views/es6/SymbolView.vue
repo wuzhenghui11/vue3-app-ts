@@ -41,6 +41,10 @@
     <h3>Symbol.isConcatSpreadable</h3>
     <p>对象的Symbol.isConcatSpreadable属性等于一个布尔值，表示该对象用于Array.prototype.concat()时，是否可以展开。</p>
 
+    <h3>Symbol.species</h3>
+    <p>总之，Symbol.species的作用在于，实例对象在运行过程中，需要再次调用自身的构造函数时，会调用该属性指定的构造函数。
+      它主要的用途是，有些类库是在基类的基础上修改的，那么子类使用继承的方法时，作者可能希望返回基类的实例，而不是子类的实例。</p>
+
     <h3>Symbol.unscopables</h3>
     <p>对象的Symbol.unscopables属性，指向一个对象。该对象指定了使用with关键字时，哪些属性会被with环境排除。</p>
     <highlightjs

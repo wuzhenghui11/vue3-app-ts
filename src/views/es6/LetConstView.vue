@@ -139,6 +139,8 @@ var drink='饮料';
           </highlightjs>
       </a-collapse-panel>
     </a-collapse>
+    <b>ES2020 在语言标准的层面，引入globalThis作为顶层对象。也就是说，任何环境下，globalThis都是存在的，都可以从它拿到顶层对象，指向全局环境下的this。
+垫片库global-this模拟了这个提案，可以在所有环境拿到globalThis。</b>
   </div>
 </template>
 

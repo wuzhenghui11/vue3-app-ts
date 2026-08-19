@@ -16,9 +16,47 @@ ES2022 新增了d修饰符，这个修饰符可以让exec()、match()的返回�
       result.indices // [ [ 1, 6 ], [ 4, 6 ] ]
       ">
     </highlightjs>
+    <h2>u修饰符</h2>
+    <h3>点字符</h3>
+    <p>点（.）字符在正则表达式中，含义是除了换行符以外的任意单个字符。对于码点大于0xFFFF的 Unicode 字符，点字符不能识别，必须加上u修饰符。</p>
+    <highlightjs
+     code="
+var s = '𠮷';
+/^.$/.test(s) // false
+/^.$/u.test(s) // true
+     "></highlightjs>
+     <h2>解构赋值和替换</h2>
+     <highlightjs
+      code="
+let {groups: {one, two}} = /^(?<one>.*):(?<two>.*)$/u.exec('foo:bar');
+one  // foo
+two  // bar
+
+let re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/u;
+
+'2015-01-02'.replace(re, '$<day>/$<month>/$<year>')
+// '02/01/2015'
+      "></highlightjs>
+      <h2>非捕获组匹配</h2>
+      匹配pattern 但不获取匹配结果，不进行存储供以后使用，避免浪费内存
+      <highlightjs
+        code="
+// (?:pattern)
+/^x(?:HELLO)x$/i.exec('xHELLOx')
+// ['xHELLOx', index: 0, input: 'xHELLOx', groups: undefined]
+        ">
+      </highlightjs>
   </div>
 </template>
-<script setup lang="ts">
+<script setup>
+function replacer(match, p1, p2, p3, offset, string, groups) {
+  const { log } = console
+  // p1 是非数字，p2 是数字，且 p3 非字母数字
+  log(match, offset, string, groups)
+  return [p1, p2, p3].join(" - ");
+}
+const newString = "abc12345#$*%".replace(/(?<word>[^\d]*)(\d*)([^\w]*)/, replacer);
+console.log(newString); // abc - 12345 - #$*%
 </script>
 <style lang="less">
   

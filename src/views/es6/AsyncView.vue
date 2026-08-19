@@ -100,6 +100,7 @@
   const pp = async function () {
     return new Promise((reslove, reject) => {
       setTimeout(() => {
+        console.log('setTimeout 12')
         reslove()
       }, 6000)
     })
@@ -123,6 +124,15 @@
     e => console.log('reject-', e)
   )
   //reject Error: 出错了
+
+  function throwError () {
+    throw Error('方法抛出一个错误，try catch 能捕获到吗')
+  }
+  try {
+    throwError()
+  } catch (e) {
+    console.log(e); // 捕获到了 打印出来了
+  }
 
 
   onMounted(() => {

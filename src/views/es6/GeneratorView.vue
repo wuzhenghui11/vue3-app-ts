@@ -106,12 +106,25 @@
   
 <script setup>
   import { ref, onMounted } from 'vue'
+  function* fibs() {
+    let a = 0;
+    let b = 1;
+    while (true) {
+      yield a;
+      [a, b] = [b, a + b];
+    }
+  }
+  const fib = fibs()
+  console.log(fib.next())
+  console.log(fib.next())
 
   function* gen() {
     // 第一次 next {value: 579, done: false}
     // 第二次执行 return 的 {value: 11, done: true}
     // 第三次的 next {value: undefined, done: true}
     yield  123 + 456
+    // console.log('123' + (yield 222))
+    console.log(222)
     return 11
   }
 

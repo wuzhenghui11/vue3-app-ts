@@ -1,5 +1,13 @@
 <template>
   <div class="learn">
+    <p>{{ count }}</p>
+    <a-button type="primary" @click="alwaysSmall = 2">11</a-button>
+    <a-button type="primary" @click="printAlwaysSmall" :ref="templateRefFunc">22</a-button>
+
+    <!-- <input :ref="templateRefFunc"> -->
+    
+
+
     <img :src="img01" />
     <p v-for="(item, key, index) in myObject" :key="key">
       {{ item }}:{{ key }}:{{ index }}
@@ -29,6 +37,43 @@
 
   const router = useRouter()
   const route = useRoute()
+
+  /**
+   * 分割
+   */
+
+  const alwaysSmall = computed({
+    get(previous) {
+      if (count.value <= 3) {
+        return count.value
+      }
+
+      return previous
+    },
+    set(newValue) {
+      count.value = newValue * 2
+    }
+  })
+
+  function printAlwaysSmall () {
+    console.dir(alwaysSmall);
+    alert(alwaysSmall.value)
+  }
+
+  function templateRefFunc (el) {
+    console.dir(el);
+
+  }
+
+
+  /**
+   * 分割
+   */
+
+
+
+
+
 
   const count = ref(1)
   const state = reactive({ count: 1 })

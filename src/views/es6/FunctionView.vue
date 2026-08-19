@@ -14,6 +14,7 @@
       f(2) // 2
     ">
     </highlightjs>
+    <h2>箭头函数重点</h2>
     <h3>箭头函数有几个使用注意点。</h3>
     （1）箭头函数没有自己的this对象（详见下文）。
     （2）不可以当作构造函数，也就是说，不可以对箭头函数使用new命令，否则会抛出一个错误。
@@ -22,18 +23,62 @@
     上面四点中，最重要的是第一点。对于普通函数来说，内部的this指向函数运行时所在的对象，但是这一点对箭头函数不成立。它没有自己的this对象，内部的this就是定义时上层作用域中的this。也就是说，箭头函数内部的this指向是固定的，相比之下，普通函数的this指向是可变的。
   </div>
 </template>
-<script setup lang="ts">
+<script setup>
   import { onMounted } from 'vue'
-  function printArguments (a: number) {
-    console.log(a, arguments)
+
+  const { log } = console
+  const a = {
+    a: 1,
+    b () {
+      console.log(this.a)
+    },
+    c: () => {
+      console.log(this) // undefined
+    }
+  }
+  a.b.call({a: 2})
+  function printArguments (a) {
+    const arr = []
+    arr.push(arguments)
+    log(arr)
+    log(a, arguments)
   }
   function rest (...args) {
     console.log(args)
   }
   onMounted(() => {
-    printArguments(11)
+    printArguments(11, 22)
     rest(1, 2)
   })
+
+  /* function tco(f) {
+    var value;
+    var active = false;
+    var accumulated = [];
+
+    return function accumulator() {
+      accumulated.push(arguments);
+      if (!active) {
+        active = true;
+        while (accumulated.length) {
+          value = f.apply(this, accumulated.shift());
+        }
+        active = false;
+        return value;
+      }
+    };
+  }
+
+  var sum = tco(function(x, y) {
+    if (y > 0) {
+      return sum(x + 1, y - 1)
+    }
+    else {
+      return x
+    }
+  }); */
+
+  // sum(1, 100000)
 </script>
 <style lang="">
   
